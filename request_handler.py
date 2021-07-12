@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from animals import get_all_animals, get_single_animal
+from locations.request import get_all_locations, get_single_location
+from animals.request import get_all_animals, get_single_animal
 
 
 # Here's a class. It inherits from another class.
@@ -69,17 +70,20 @@ class HandleRequests(BaseHTTPRequestHandler):
         (resource, id) = self.parse_url(self.path)
 
 
-        # It's an if..else statement
+         # Parse the URL and capture the tuple that is returned
+        (resource, id) = self.parse_url(self.path)
+
         if resource == "animals":
             if id is not None:
-            # In Python, this is a list of dictionaries
-            # In JavaScript, you would call it an array of objects
                 response = f"{get_single_animal(id)}"
+            else:
+                response = f"{get_all_animals()}"
+        elif resource == "locations":
+            if id is not None:
+                response = f"{get_single_location(id)}"
+            else:
+                response = f"{get_all_locations()}"
 
-        else:
-            response = f"{get_all_animals()}"
-
-        # This weird code sends a response back to the client
         self.wfile.write(response.encode())
 
     # Here's a method on the class that overrides the parent's method.
