@@ -1,3 +1,32 @@
+ANIMALS = [
+    {
+        "id": 1,
+        "name": "Snickers",
+        "species": "Dog",
+        "locationId": 1,
+        "customerId": 4
+    },
+    {
+        "id": 2,
+        "name": "Gypsy",
+        "species": "Dog",
+        "locationId": 1,
+        "customerId": 2
+    },
+    {
+        "id": 3,
+        "name": "Blue",
+        "species": "Cat",
+        "locationId": 2,
+        "customerId": 1
+    }
+]
+
+
+def get_all_animals():
+    return ANIMALS
+
+
 # Function with a single parameter
 def get_single_animal(id):
     # Variable to hold the found animal, if it exists
