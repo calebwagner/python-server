@@ -119,6 +119,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         new_animal = None
         new_location = None
         new_employee = None
+        new_customer = None
 
         # Add a new animal to the list. Don't worry about
         # the orange squiggle, you'll define the create_animal
@@ -137,6 +138,11 @@ class HandleRequests(BaseHTTPRequestHandler):
             new_employee = create_employee(post_body)
         # Encode the new employee and send in response
         self.wfile.write(f"{new_employee}".encode())
+
+        if resource == "customers":
+            new_customer = create_customer(post_body)
+        # Encode the new customer and send in response
+        self.wfile.write(f"{new_customer}".encode())
 
 
     # Here's a method on the class that overrides the parent's method.
