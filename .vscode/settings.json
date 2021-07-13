@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/Users/calebwagner/.local/share/virtualenvs/calebwagner-ccvH8rGd/bin/python"
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }
