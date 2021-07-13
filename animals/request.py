@@ -29,6 +29,14 @@ def get_all_animals():
 
 # Function with a single parameter
 def get_single_animal(id):
+    """gets a single animal with a specific id appended to the URL
+
+    Args:
+        id (number): id to be returned in the URL
+
+    Returns:
+        [type]: [description]
+    """
     # Variable to hold the found animal, if it exists
     requested_animal = None
 
@@ -43,6 +51,14 @@ def get_single_animal(id):
     return requested_animal
 
 def create_animal(animal):
+    """[summary]
+
+    Args:
+        animal ([type]): [description]
+
+    Returns:
+        [type]: [description]
+    """
     # Get the id value of the last animal in the list
     max_id = ANIMALS[-1]["id"]
 
@@ -59,6 +75,11 @@ def create_animal(animal):
     return animal
 
 def delete_animal(id):
+    """[summary]
+
+    Args:
+        id ([type]): [description]
+    """
     # Initial -1 value for animal index, in case one isn't found
     animal_index = -1
 
