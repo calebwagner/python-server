@@ -117,6 +117,8 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         # Initialize new animal
         new_animal = None
+        new_location = None
+
 
         # Add a new animal to the list. Don't worry about
         # the orange squiggle, you'll define the create_animal
