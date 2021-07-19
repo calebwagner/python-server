@@ -74,10 +74,6 @@ class HandleRequests(BaseHTTPRequestHandler):
          # Parse the URL and capture the tuple that is returned
         (resource, id) = self.parse_url(self.path)
 
-
-         # Parse the URL and capture the tuple that is returned
-        (resource, id) = self.parse_url(self.path)
-
         if resource == "animals":
             if id is not None:
                 response = f"{get_single_animal(id)}"
@@ -127,22 +123,22 @@ class HandleRequests(BaseHTTPRequestHandler):
         if resource == "animals":
             new_animal = create_animal(post_body)
         # Encode the new animal and send in response
-        self.wfile.write(f"{new_animal}".encode())
+            self.wfile.write(f"{new_animal}".encode())
 
         if resource == "locations":
             new_location = create_location(post_body)
         # Encode the new animal and send in response
-        self.wfile.write(f"{new_location}".encode())
+            self.wfile.write(f"{new_location}".encode())
 
         if resource == "employees":
             new_employee = create_employee(post_body)
         # Encode the new employee and send in response
-        self.wfile.write(f"{new_employee}".encode())
+            self.wfile.write(f"{new_employee}".encode())
 
         if resource == "customers":
             new_customer = create_customer(post_body)
         # Encode the new customer and send in response
-        self.wfile.write(f"{new_customer}".encode())
+            self.wfile.write(f"{new_customer}".encode())
 
     def do_DELETE(self):
         # Set a 204 response code
@@ -176,7 +172,6 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Parse the URL
         (resource, id) = self.parse_url(self.path)
 
-        # Delete a single animal from the list
         if resource == "animals":
             update_animal(id, post_body)
 
@@ -191,8 +186,6 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         # Encode the new animal and send in response
         self.wfile.write("".encode())
-
-
 
 
     # Here's a method on the class that overrides the parent's method.
