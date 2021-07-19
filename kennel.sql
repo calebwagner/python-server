@@ -44,10 +44,10 @@ INSERT INTO `Employee` VALUES (null, "Hannah Hall", "204 Empty Ave", 1);
 INSERT INTO `Employee` VALUES (null, "Leah Hoefling", "200 Success Way", 2);
 
 
-INSERT INTO `Customer` VALUES (null, "Mo Silvera", "201 Created St", "mo@silvera.com", "password");
-INSERT INTO `Customer` VALUES (null, "Bryan Nilsen", "500 Internal Error Blvd", "bryan@nilsen.com", "password");
-INSERT INTO `Customer` VALUES (null, "Jenna Solis", "301 Redirect Ave", "jenna@solis.com", "password");
-INSERT INTO `Customer` VALUES (null, "Emily Lemmon", "454 Mulberry Way", "emily@lemmon.com", "password");
+INSERT INTO `Customer` VALUES (null, "Bob", "Bob Street", "bob@bob.com", "password");
+INSERT INTO `Customer` VALUES (null, "Bobby", "Bobby Drive", "bobby@bobby.com", "password");
+INSERT INTO `Customer` VALUES (null, "Jen", "Jen Street", "jen@jen.com", "password");
+INSERT INTO `Customer` VALUES (null, "Jenny", "Jenny Way", "jenny@jenny.com", "password");
 
 
 
