@@ -17,4 +17,3 @@
    > Example: When user does BLANK, then BLANK should happen.
 4. View code file.
    > Confirm file modifications are present as indicated above.
-   > Confirm no unused code or extraneous comments exist.
