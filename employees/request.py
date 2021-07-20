@@ -20,6 +20,32 @@ EMPLOYEES = [
     }
 ]
 
+def get_employees_by_location(location):
+
+    with sqlite3.connect("./kennel.db") as conn:
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
+
+        # Write the SQL query to get the information you want
+        db_cursor.execute("""
+        select
+            c.id,
+            c.name,
+            c.address,
+            c.location_id
+        from Employee c
+        WHERE c.location_id = ?
+        """, ( location, ))
+
+        employees = []
+        dataset = db_cursor.fetchall()
+
+        for row in dataset:
+            employee = Employee(row['id'], row['name'], row['address'], row['location_id'])
+            employees.append(employee.__dict__)
+
+    return json.dumps(employees)
+
 def get_all_employees():
     # Open a connection to the database
     with sqlite3.connect("./kennel.db") as conn:
