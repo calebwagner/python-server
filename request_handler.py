@@ -1,4 +1,4 @@
-from customers.request import get_all_customers, get_single_customer, create_customer, delete_customer, update_customer
+from customers.request import get_all_customers, get_single_customer, create_customer, delete_customer, update_customer, get_customers_by_email
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from locations.request import get_all_locations, get_single_location, create_location, delete_location, update_location
 from animals.request import get_all_animals, get_single_animal, create_animal, delete_animal, update_animal, get_animals_by_location
