@@ -182,7 +182,12 @@ class HandleRequests(BaseHTTPRequestHandler):
         # Encode the new animal and send in response
         self.wfile.write("".encode())
 
+    # Here's a method on the class that overrides the parent's method.
+    # It handles any PUT request.
+
     def do_PUT(self):
+        """Handles PUT requests to the server
+            """
         content_len = int(self.headers.get('content-length', 0))
         post_body = self.rfile.read(content_len)
         post_body = json.loads(post_body)
@@ -202,8 +207,6 @@ class HandleRequests(BaseHTTPRequestHandler):
             self._set_headers(404)
 
         self.wfile.write("".encode())
-
-
 
 # This function is not inside the class. It is the starting
 # point of this application.
