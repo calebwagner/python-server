@@ -4,6 +4,7 @@ from locations.request import get_all_locations, get_single_location, create_loc
 from animals.request import get_all_animals, get_single_animal, create_animal, delete_animal, update_animal, get_animals_by_location, get_animals_by_status
 from employees.request import get_all_employees, get_single_employee, create_employee, delete_employee, update_employee, get_employees_by_location
 import json
+from animals.request import get_animals_by_location
 
 
 # Here's a class. It inherits from another class.
@@ -21,28 +22,28 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         # Check if there is a query string parameter
         if "?" in resource:
-            # GIVEN: /customers?email=jenna@solis.com
+            # GIVEN: localhost:8088/customers?email=jenna@solis.com
+            param = resource.split("?")[1]  # email=jenna@solis.com  (give me back everything after the ? and set that equal to param)
+            resource = resource.split("?")[0]  # 'customers'  (give me back whatever is after the 1st index position after localhost:8088/ and set that equal to the new resource variable)
+            pair = param.split("=")  # [ 'email', 'jenna@solis.com' ]  (take param from above and split whats before and after the = sign and set that equal to pair)
+            key = pair[0]  # 'email'  (take that the 1st index value of pair and set that equal to key)
+            value = pair[1]  # 'jenna@solis.com'  (take that the 2nd index value of pair and set that equal to value)
 
-            param = resource.split("?")[1]  # email=jenna@solis.com
-            resource = resource.split("?")[0]  # 'customers'
-            pair = param.split("=")  # [ 'email', 'jenna@solis.com' ]
-            key = pair[0]  # 'email'
-            value = pair[1]  # 'jenna@solis.com'
-
-            return ( resource, key, value )
+            return ( resource, key, value ) # ( customers, email, jenna@solis.com )  (and at last we have a the completed path broken up)
 
         # No query string parameter
+        # GIVEN: localhost:8088/customers
         else:
             id = None
 
             try:
                 id = int(path_params[2])
             except IndexError:
-                pass  # No route parameter exists: /animals
+                pass  # No route parameter exists: /customers
             except ValueError:
-                pass  # Request had trailing slash: /animals/
+                pass  # Request had trailing slash: /customers/
 
-            return (resource, id)
+            return (resource, id) # ( customers, None )
 
 
     # Here's a class function
@@ -87,14 +88,24 @@ class HandleRequests(BaseHTTPRequestHandler):
 
             if resource == "animals":
                 if id is not None:
-                        response = f"{get_single_animal(id)}"
+                    response = f"{get_single_animal(id)}"
                 else:
-                        response = f"{get_all_animals()}"
+                    response = f"{get_all_animals()}"
             elif resource == "customers":
                 if id is not None:
                     response = f"{get_single_customer(id)}"
                 else:
                     response = f"{get_all_customers()}"
+            elif resource == "employees":
+                if id is not None:
+                    response = f"{get_single_employee(id)}"
+                else:
+                    response = f"{get_all_employees()}"
+            elif resource == "locations":
+                if id is not None:
+                    response = f"{get_single_location(id)}"
+                else:
+                    response = f"{get_all_locations()}"
 
         # Response from parse_url() is a tuple with 3
         # items in it, which means the request was for
